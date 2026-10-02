@@ -50,3 +50,31 @@ redirect_urls = [ "https://example.com/api/auth" ]
 [build]
 include_config_on_deploy = true
 automatically_update_urls_on_dev = true
+
+[metaobjects.app.qrcode]
+name = "QR Code"
+description = "QR codes that link to products"
+
+  [metaobjects.app.qrcode.access]
+  admin = "merchant_read_write"
+
+[metaobjects.app.qrcode.fields.title]
+name = "Title"
+type = "single_line_text_field"
+required = true
+
+[metaobjects.app.qrcode.fields.product]
+name = "Product"
+type = "product_reference"
+
+[metaobjects.app.qrcode.fields.product_variant]
+name = "Product Variant"
+type = "variant_reference"
+
+[metaobjects.app.qrcode.fields.destination]
+name = "Destination"
+type = "single_line_text_field"
+
+[metaobjects.app.qrcode.fields.scans]
+name = "Scans"
+type = "number_integer"
