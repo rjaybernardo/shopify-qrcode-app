@@ -154,10 +154,11 @@ async function transformMetaobject(metaobject, shop) {
     productAlt: product?.media?.nodes[0]?.preview?.image?.altText,
   };
 
-  qrCode.destinationUrl = getDestinationUrl(qrCode, shop);
-  qrCode.image = await getQRCodeImage(metaobject.handle, shop);
-
-  return qrCode;
+  return {
+    ...qrCode,
+    destinationUrl: getDestinationUrl(qrCode, shop),
+    image: await getQRCodeImage(metaobject.handle, shop),
+  };
 }
 
 export async function getQRCodeImage(handle, shop) {
